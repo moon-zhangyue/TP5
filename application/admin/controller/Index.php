@@ -1,7 +1,9 @@
 <?php
 namespace app\admin\controller;
 
-class Index
+use think\Controller;
+
+class Index extends Controller
 {
     public function index()
     {
@@ -11,5 +13,12 @@ class Index
     public function test()
     {
         return 'dawdaw';
+    }
+
+    public function welcome() {
+        //\phpmailer\Email::send('463785435@qq.com','tp5-emaiil','sucess-hala');
+        //return '发送邮件成功';
+        return $this->fetch();
+//        return "欢迎来到o2o主后台首页!";
     }
 }
