@@ -15,9 +15,9 @@
 				<span class="select-box">
 				<select name="parent_id" class="select">
 					<option value="0">一级分类</option>
-				  {volist name="categorys" id="vo"}
-					<option value="{$vo.id}">--{$vo.name}</option>
-					{/volist}
+                        {volist name="categorys" id="vo"}
+                            <option value="{$vo.id}">--{$vo.name}</option>
+					    {/volist}
 				</select>
 				</span>
             </div>
