@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title></title>
+    <title>{$title}</title>
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="__STATIC__/index/css/base.css" />
     <link rel="stylesheet" href="__STATIC__/index/css/common.css" />
+    <link rel="stylesheet" href="__STATIC__/index/css/{$controler}.css" />
     <script type="text/javascript" src="__STATIC__/index/js/html5shiv.js"></script>
     <script type="text/javascript" src="__STATIC__/index/js/respond.min.js"></script>
     <script type="text/javascript" src="__STATIC__/index/js/jquery-1.11.3.min.js"></script>
@@ -16,23 +17,28 @@
 <div class="header-bar">
     <div class="header-inner">
         <ul class="father">
-            <li><a></a></li>
+            <li><a>{$city.name}</a></li>
             <li>|</li>
             <li class="city">
                 <a>切换城市<span class="arrow-down-logo"></span></a>
                 <div class="city-drop-down">
                     <h3>热门城市</h3>
                     <ul class="son">
-                        <li><a href=""></a></li>
+                        {volist name="citys" id="vo"}
+                        <li><a href="{:url('index/index', ['city'=>$vo['uname']])}">{$vo.name}</a></li>
+                        {/volist}
                     </ul>
 
                 </div>
             </li>
-            <li>欢迎您：</li>
+            {if condition="$user"}
+            <li>欢迎您：{$user->username}</li>
             <li><a href="{:url('user/logout')}">退出</a></li>
+            {else /}
             <li><a href="{:url('user/register')}">注册</a></li>
             <li>|</li>
             <li><a href="{:url('user/login')}">登录</a></li>
+            {/if}
             <li><a href="{:url('bis/login/index')}">商户中心</a></li>
         </ul>
     </div>

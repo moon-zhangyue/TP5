@@ -9,11 +9,14 @@
             <li class="nav-item">
                 <span class="item">全部分类</span>
                 <div class="left-menu">
+                    {volist name="cats" id="cat"}
                     <div class="level-item">
                         <div class="first-level">
                             <dl>
-                                <dt class="title"><a href="" target="_blank"></a></dt>
-                                <dd><a href="" target="_blank" class=""></a></dd>
+                                <dt class="title"><a href="{:url('lists/index', ['id'=>$key])}" target="_blank">{$cat[0]}</a></dt>
+                                {volist name="cat[1]" id="vo" length="2"}
+                                <dd><a href="{:url('lists/index', ['id'=>$vo.id])}" target="_blank" class="">{$vo.name}</a></dd>
+                                {/volist}
 
                             </dl>
                         </div>
@@ -23,7 +26,9 @@
                                     <h3>其他分类</h3>
                                     <ul>
 
-                                        <li> <a target="_blank" href=""</a></li>
+                                        {volist name="cat[1]" id="vo"}
+                                        <li> <a target="_blank" href="{:url('lists/index', ['id'=>$vo.id])}">{$vo.name}</a></li>
+                                        {/volist}
                                     </ul>
                                 </div>
 
@@ -31,6 +36,7 @@
                             </div>
                         </div>
                     </div>
+                    {/volist}
 
                 </div>
             </li>
